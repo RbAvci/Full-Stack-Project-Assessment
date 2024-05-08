@@ -18,11 +18,6 @@
 	},
 	"author": "Code Your Future <mail@codeyourfuture.io>",
 	"license": "ISC",
-	"devDependencies": {
-		"@codeyourfuture/eslint-config-standard": "^4.0.3",
-		"concurrently": "^8.2.2",
-		"cross-env": "^7.0.3"
-	},
 	"workspaces": [
 		"client",
 		"server",
