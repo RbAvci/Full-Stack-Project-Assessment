@@ -36,3 +36,7 @@
 .video-title a:hover {
 	text-decoration: underline;
 }
+.video-item iframe {
+	width: 100%; /* İframe'in genişliğini % olarak ayarlayın */
+	height: 100%; /* İframe'in yüksekliğini % olarak ayarlayın */
+}

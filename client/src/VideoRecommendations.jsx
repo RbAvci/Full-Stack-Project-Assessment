@@ -3,6 +3,7 @@ import "./VideoRecommendations.css";
 import DeleteVideoRecommendation from "./DeleteVideoRecommendation";
 import NewVideoForm from "./NewVideoForm.jsx";
 import RatingDisplay from "./RatingDisplay.jsx";
+
 const VideoList = () => {
 	const [videos, setVideos] = useState([]);
 
@@ -37,25 +38,40 @@ const VideoList = () => {
 		setVideos(updatedVideos);
 	};
 
+	function changeYTLinkToEmbed(watchLink) {
+		return watchLink.replace("watch?v=", "embed/");
+	}
+
 	return (
 		<div className="video-list-container">
 			<div className="video-list">
-				{videos.map((videoData, i) => (
-					<div className="video-item" data-testid="video" key={i}>
-						<div className="video-title">
-							<a href={videoData.src}>{videoData.title}</a>
+				{videos.map((videoData, i) => {
+					const embedLink = changeYTLinkToEmbed(videoData.src);
+					return (
+						<div className="video-item" data-testid="video" key={i}>
+							<div className="video-title">{videoData.title}</div>
+							<div className="video-frame">
+								<iframe
+									title={videoData.title}
+									width="560"
+									height="315"
+									src={embedLink}
+									frameBorder="0"
+									allowFullScreen
+								></iframe>
+							</div>
+							<DeleteVideoRecommendation
+								videoId={videoData.id}
+								onDelete={handleDelete}
+							/>
+							<RatingDisplay
+								videoId={videoData.id}
+								rating={videoData.rating}
+								onUpdate={handleRatingUpdate}
+							/>
 						</div>
-						<DeleteVideoRecommendation
-							videoId={videoData.id}
-							onDelete={handleDelete}
-						/>
-						<RatingDisplay
-							videoId={videoData.id}
-							rating={videoData.rating}
-							onUpdate={handleRatingUpdate}
-						/>
-					</div>
-				))}
+					);
+				})}
 			</div>
 			<NewVideoForm onSubmit={fetchVideos} />
 		</div>
