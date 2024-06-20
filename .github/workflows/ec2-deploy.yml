@@ -24,4 +24,4 @@ jobs:
             cd Full-Stack-Project-Assessment && \
             git checkout main && \
             git pull && \
-            npm run build"
+            npm run build &&"
