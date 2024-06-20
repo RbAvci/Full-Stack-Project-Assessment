@@ -20,8 +20,9 @@ jobs:
 
       - name: Connect to EC2 and deploy
         run: |
-          ssh -i ~/.ssh/id_rsa ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "cd Full-Stack-Project-Assessment && git checkout main && git pull"
-
-      - name: Connect to EC2 and build
-        run: |
-          ssh -i ~/.ssh/id_rsa ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "cd Full-Stack-Project-Assessment && npm run build"
+          ssh -i ~/.ssh/id_rsa ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "\
+          source ~/.nvm/nvm.sh && \
+          cd Full-Stack-Project-Assessment && \
+          git checkout main && \
+          git pull && \
+          npm run build"
