@@ -21,7 +21,7 @@ jobs:
       - name: Connect to EC2 and deploy
         run: |
           ssh -i ~/.ssh/id_rsa ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "\
-            cd /Full-Stack-Project-Assessment && \
+            cd Full-Stack-Project-Assessment && \
             git checkout main && \
             git pull && \
             npm run build"
