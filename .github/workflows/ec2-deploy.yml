@@ -26,4 +26,6 @@ jobs:
           git checkout main && \
           git pull && \
           npm run build && \
-          nohup npm run dev > /dev/null 2>&1 &"
+          pm2 kill && \
+          pm2 start npm --name "video-recommendations" -- start && \
+          pm2 save"
